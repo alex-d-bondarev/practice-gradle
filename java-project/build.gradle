@@ -1,3 +1,9 @@
+buildscript {
+    dependencies {
+        classpath files('show-date/build/libs/show-date-1.0-SNAPSHOT.jar')
+    }
+}
+
 plugins {
     id 'java'
 }
@@ -17,20 +23,4 @@ dependencies {
 }
 
 apply plugin: 'project-report'
-
-class ShowDate extends DefaultTask {
-    String dateMessage = "Current date and time is "
-
-    @TaskAction
-    void showDate() {
-        println ""
-        println dateMessage + new Date()
-        println ""
-    }
-}
-
-task showDate(type: ShowDate)
-
-task customShowDate(type: ShowDate){
-    dateMessage = "Custom task message. "
-}
+apply plugin: 'show-date-plugin'
