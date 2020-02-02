@@ -17,3 +17,14 @@ dependencies {
 }
 
 apply plugin: 'project-report'
+
+task showDate{
+    dependsOn build
+    group = 'my tasks'
+    description = "Show current date"
+    doLast{
+        println ""
+        println 'Current date and time is ' + new Date()
+        println ""
+    }
+}
